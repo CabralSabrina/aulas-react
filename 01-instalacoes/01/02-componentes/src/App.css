@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  background-color: aquamarine;
+  width: 915px;
+  height: 35px;
+  margin-bottom: 5px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  background-color: blueviolet;
+  width: 915px;
+  height: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.footer {
+  background-color: bisque;
+  width: 915px;
+  height: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 5px;
+  color: black;
+}

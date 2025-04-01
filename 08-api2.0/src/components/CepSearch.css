@@ -1,0 +1,85 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo centralizado com fundo moderno */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2); /* Fundo degradê */
+    font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
+}
+
+/* Caixa principal com efeito Glassmorphism */
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15); /* Transparência */
+    backdrop-filter: blur(10px); /* Efeito de desfoque (Glassmorphism) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    text-align: center;
+    color: #fff; /* Cor do texto */
+}
+
+/* Título estilizado */
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Campo de entrada */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.3); /* Fundo translúcido */
+    color: #fff;
+    text-align: center;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Efeito ao focar no input */
+input:focus {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Botão estilizado */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    background: #ff5722; /* Cor chamativa */
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Efeito hover no botão */
+button:hover {
+    background: #e64a19;
+    transform: scale(1.05);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+    .container {
+        max-width: 90%;
+    }
+}

@@ -1,0 +1,43 @@
+li {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+
+}
+
+a {
+    text-decoration: none;
+
+}
+
+.header {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reader nav ul {
+    list-style: none;
+    
+}
+
+.header nav ul li{
+    display: flex;
+    gap: 30px;
+
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.header nav ul li a:hover {
+    color: #93c5fd;
+}

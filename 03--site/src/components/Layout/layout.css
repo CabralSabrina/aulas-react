@@ -1,0 +1,36 @@
+body {
+font-family: Arial, sans-serif;
+  
+  background-color: #f3f4f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0;
+}
+
+
+h2 {
+    text-align: center;
+    color: #6c3658;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #06090f;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    background-color: rgb(233, 233, 219);  /* Cor do fundo */
+    padding: 10px;  /* Espaço interno para afastar do texto */
+    border: 2px solid black;  /* Borda */
+    display: inline-block;  /* Para ajustar o tamanho ao texto */
+}
+
+#autor {
+    text-align: center;
+    color: #204590;
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+}

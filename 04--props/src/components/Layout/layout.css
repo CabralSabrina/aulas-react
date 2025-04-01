@@ -1,0 +1,36 @@
+
+
+.layout {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+
+    background-color: #f3f4f6;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    text-align: center;
+}
+
+.layout h1 {
+    text-align: center;
+    
+}
+
+
+p {
+   
+    text-align: center;
+    color: #06090f;
+    line-height: 1.6;
+    background-color: rgb(233, 233, 219);
+    /* Cor do fundo */
+    padding: 10px;
+    /* Espaço interno para afastar do texto */
+    border: 2px solid black;
+    /* Borda */
+    /* Para ajustar o tamanho ao texto */
+
+}

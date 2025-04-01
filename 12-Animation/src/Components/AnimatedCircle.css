@@ -1,0 +1,13 @@
+.animated-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
+  
+  .animated-circle.animate {
+    transform: scale(1.5) rotate(360deg);
+    background-color: #e74c3c;
+    border-radius: 0%;
+  }
