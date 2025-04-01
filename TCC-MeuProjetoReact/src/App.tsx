@@ -1,24 +1,39 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 
+interface Item {
+  name: string;
+  email: string;
+  phone: string;
+}
+
 export default function App() {
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [inputValue, setInputValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
 
   const handleAddItem = () => {
-    if (!inputValue) return;
+    if (!inputValue || !email || !phone) return;
+    const newItem = { name: inputValue, email, phone };
+    
     if (editingIndex !== null) {
-      setItems(items.map((item, index) => (index === editingIndex ? inputValue : item)));
+      setItems(items.map((item, index) => (index === editingIndex ? newItem : item)));
       setEditingIndex(null);
     } else {
-      setItems([...items, inputValue]);
+      setItems([...items, newItem]);
     }
     setInputValue("");
+    setEmail("");
+    setPhone("");
   };
 
   const handleEditItem = (index: number) => {
-    setInputValue(items[index]);
+    setInputValue(items[index].name);
+    setEmail(items[index].email);
+    setPhone(items[index].phone);
     setEditingIndex(index);
   };
 
@@ -34,23 +49,47 @@ export default function App() {
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Digite um nome"
+          placeholder="Nome"
+        />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Telefone"
         />
         <button onClick={handleAddItem}>
           {editingIndex !== null ? "Atualizar" : "Adicionar"}
         </button>
       </div>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            {item}
-            <div>
-              <button onClick={() => handleEditItem(index)}>✏️</button>
-              <button onClick={() => handleDeleteItem(index)}>🗑️</button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <AnimatePresence>
+        <ul>
+          {items.map((item, index) => (
+            <motion.li
+              key={item.name + index}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div>
+                <strong>{item.name}</strong>
+                <p>{item.email}</p>
+                <p>{item.phone}</p>
+              </div>
+              <div>
+                <button onClick={() => handleEditItem(index)}>✏️</button>
+                <button onClick={() => handleDeleteItem(index)}>🗑️</button>
+              </div>
+            </motion.li>
+          ))}
+        </ul>
+      </AnimatePresence>
     </div>
   );
 }
