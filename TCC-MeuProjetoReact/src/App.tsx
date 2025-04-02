@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./App.css";
 
@@ -14,6 +14,16 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const storedItems = localStorage.getItem("contacts");
+    if (storedItems) setItems(JSON.parse(storedItems));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(items));
+  }, [items]);
 
   const handleAddItem = () => {
     if (!inputValue || !email || !phone) return;
@@ -41,9 +51,16 @@ export default function App() {
     setItems(items.filter((_, i) => i !== index));
   };
 
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container">
       <h1>CRUD Simples</h1>
+      
+
+
       <div className="input-group">
         <input
           type="text"
@@ -66,10 +83,20 @@ export default function App() {
         <button onClick={handleAddItem}>
           {editingIndex !== null ? "Atualizar" : "Adicionar"}
         </button>
+              {/* Barra de Pesquisa */}
+      <input
+        type="text"
+        placeholder="Buscar contato..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="search-bar"
+      />
       </div>
+      
+      {/* Renderizar apenas os contatos filtrados */}
       <AnimatePresence>
         <ul>
-          {items.map((item, index) => (
+          {filteredItems.map((item, index) => (
             <motion.li
               key={item.name + index}
               initial={{ opacity: 0, y: -10 }}
@@ -82,7 +109,7 @@ export default function App() {
                 <p>{item.email}</p>
                 <p>{item.phone}</p>
               </div>
-              <div>
+              <div className="btns">
                 <button onClick={() => handleEditItem(index)}>✏️</button>
                 <button onClick={() => handleDeleteItem(index)}>🗑️</button>
               </div>
